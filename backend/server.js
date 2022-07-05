@@ -4,6 +4,9 @@ const cors = require("cors");
 
 const app = express();
 
+const dotenv = require('dotenv');
+dotenv.config();
+
 //-para permitir un solo origen de consulta-
 //const options = {
 // origin: "http://localhost:3000",
@@ -24,6 +27,7 @@ app.use(cors(options)); //sin las options permite cualquier origen.
 const { readdirSync } = require("fs");
 readdirSync("./routes").map( rt => app.use("/", require("./routes/" + rt)));
 
-app.listen(8000, () => {
+const PORT = process.env.PORT || 8000;
+app.listen(PORT, () => {
   console.log("listening on http://localhost:8000");
 });
