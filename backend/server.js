@@ -24,8 +24,15 @@ const options = (req, res) => {
 };
 app.use(cors(options)); //sin las options permite cualquier origen.
 
+// ROUTES 
 const { readdirSync } = require("fs");
 readdirSync("./routes").map( rt => app.use("/", require("./routes/" + rt)));
+
+// DATABASE
+const mongoose = require("mongoose");
+mongoose.connect(process.env.DATABASE_URL, {useNewUrlParser: true})
+.then(() => console.log("Database connection established"))
+.catch(err => console.log("Error connecting to database: " + err));
 
 const PORT = process.env.PORT || 8000;
 app.listen(PORT, () => {
