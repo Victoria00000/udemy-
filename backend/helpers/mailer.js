@@ -4,6 +4,8 @@ const { google } = require("googleapis");
 
 const { OAuth2 } = google.auth;
 
+const oauth_link = "https://developers.google.com/oauthplayground";
+
 const { EMAIL, AUTHFB_ID, AUTHFB_REFRESH, AUTHFB_SECRET } = process.env;
 
 const auth = new OAuth2(AUTHFB_ID, AUTHFB_SECRET, AUTHFB_REFRESH, oauth_link);

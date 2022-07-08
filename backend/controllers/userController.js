@@ -1,6 +1,8 @@
 const User = require("../models/userModel");
 const { validateEmail, validateLength, validateUsername } = require("../helpers/validation");
 const bcrypt = require("bcrypt");
+const { generateToken } = require("../helpers/tokens");
+const { sendVerificationEmail } = require("../helpers/mailer");
 
 exports.register = async (req, res) => {
   try {
@@ -60,8 +62,6 @@ exports.register = async (req, res) => {
       verified: user.verified,
       message: "Please go to your email",
     });
- 
-    res.json(user);
 
-  } catch(err) { res.status(err.statusCode); } //cap.22
+  } catch(err) { res.status(500).json({ message: err.message }); } //cap.22
 };
