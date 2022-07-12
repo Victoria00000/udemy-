@@ -14,7 +14,7 @@ exports.validateLength = (text, min, max) => {
 exports.validateUsername = async (username) => {
   let a = false;
   do {
-    let check = await User.findOne({ username });
+    let check = await userModel.findOne({ username });
     if (check) {
       //change username:
       username += (+new Date() * Math.random()).toString().substring(0, 1);
