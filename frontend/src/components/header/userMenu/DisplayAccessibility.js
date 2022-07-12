@@ -1,4 +1,5 @@
 export const DisplayAccessibility = ({ setVisible }) => {
+  
   return (
     <div className="absolute_wrap">
       <div className="absolute_wrap_header">
