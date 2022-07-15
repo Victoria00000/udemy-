@@ -6,14 +6,14 @@ const { OAuth2 } = google.auth;
 
 const oauth_link = "https://developers.google.com/oauthplayground";
 
-const { EMAIL, AUTHFB_ID, AUTHFB_REFRESH, AUTHFB_SECRET } = process.env;
+const { EMAIL, MAILING_ID, MAILING_REFRESH, MAILING_SECRET } = process.env;
 
-const auth = new OAuth2(AUTHFB_ID, AUTHFB_SECRET, AUTHFB_REFRESH, oauth_link);
+const auth = new OAuth2(MAILING_ID, MAILING_REFRESH, MAILING_SECRET, oauth_link);
 
 
 exports.sendVerificationEmail = (email, name, url) => {
   auth.setCredentials({
-    refresh_token: AUTHFB_REFRESH,
+    refresh_token: MAILING_REFRESH,
   });
 
   const accessToken = auth.getAccessToken();
@@ -23,9 +23,9 @@ exports.sendVerificationEmail = (email, name, url) => {
     auth: {
       type: "OAuth2",
       user: EMAIL,
-      clientId: AUTHFB_ID,
-      clientSecret: AUTHFB_SECRET,
-      refreshToken: AUTHFB_REFRESH,
+      clientId: MAILING_ID,
+      clientSecret: MAILING_SECRET,
+      refreshToken: MAILING_REFRESH,
       accessToken,
     },
   });
@@ -46,7 +46,7 @@ exports.sendVerificationEmail = (email, name, url) => {
 
 exports.sendResetCode = (email, name, code) => {
   auth.setCredentials({
-    refresh_token: AUTHFB_REFRESH,
+    refresh_token: MAILING_REFRESH,
   });
 
   const accessToken = auth.getAccessToken();
@@ -56,9 +56,9 @@ exports.sendResetCode = (email, name, code) => {
     auth: {
       type: "OAuth2",
       user: EMAIL,
-      clientId: AUTHFB_ID,
-      clientSecret: AUTHFB_SECRET,
-      refreshToken: AUTHFB_REFRESH,
+      clientId: MAILING_ID,
+      clientSecret: MAILING_SECRET,
+      refreshToken: MAILING_REFRESH,
       accessToken,
     },
   });

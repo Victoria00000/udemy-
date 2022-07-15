@@ -17,10 +17,10 @@ mongoose
   .connect(process.env.DATABASE_URL, {
     useNewUrlParser: true,
   })
-  .then(() => console.log("database connected successfully"))
+  .then(() => console.log("Database connection established"))
   .catch((err) => console.log("error connecting to mongodb", err));
 
 const PORT = process.env.PORT || 8000;
 app.listen(PORT, () => {
-  console.log(`server is running on port ${PORT}..`);
+  console.log(`Server running on port ${PORT}..`);
 });
