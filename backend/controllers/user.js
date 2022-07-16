@@ -1,5 +1,5 @@
 const { validateEmail, validateLength, validateUsername } = require("../helpers/validation");
-const  User  = require("../models/userModel.js");
+const  User  = require("../models/User.js");
 const  Code  = require("../models/Code");
 const Post = require("../models/Post");
 const jwt = require("jsonwebtoken");
@@ -313,14 +313,14 @@ exports.addFriend = async (req, res) => {
         await sender.updateOne({
           $push: { following: receiver._id },
         });
-        res.json({ message: "friend request has been sent" });
+        res.json({ message: "Friend request has been sent." });
       } else {
-        return res.status(400).json({ message: "Already sent" });
+        return res.status(400).json({ message: "Already sent." });
       }
     } else {
       return res
         .status(400)
-        .json({ message: "You can't send a request to yourself" });
+        .json({ message: "You can't send a request to yourself." });
     }
   } catch (error) {res.status(500).json({ message: error.message })}
 };
@@ -343,9 +343,9 @@ exports.cancelRequest = async (req, res) => {
         await sender.updateOne({
           $pull: { following: sender._id },
         });
-        res.json({ message: "you successfully canceled request" });
+        res.json({ message: "You successfully canceled request." });
       } else {
-        return res.status(400).json({ message: "Already Canceled" });
+        return res.status(400).json({ message: "Already Canceled." });
       }
     } else {
       return res
@@ -371,12 +371,12 @@ exports.follow = async (req, res) => {
         await sender.updateOne({
           $push: { following: receiver._id },
         });
-        res.json({ message: "follow success" });
+        res.json({ message: "Follow success." });
       } else {
-        return res.status(400).json({ message: "Already following" });
+        return res.status(400).json({ message: "Already following." });
       }
     } else {
-      return res.status(400).json({ message: "You can't follow yourself" });
+      return res.status(400).json({ message: "You can't follow yourself." });
     }
   } catch (error) {res.status(500).json({ message: error.message })}
 };
@@ -397,9 +397,9 @@ exports.unfollow = async (req, res) => {
         await sender.updateOne({
           $pull: { following: receiver._id },
         });
-        res.json({ message: "unfollow success" });
+        res.json({ message: "Unfollow success." });
       } else {
-        return res.status(400).json({ message: "Already not following" });
+        return res.status(400).json({ message: "Already not following." });
       }
     } else {
       return res.status(400).json({ message: "You can't unfollow yourself" });

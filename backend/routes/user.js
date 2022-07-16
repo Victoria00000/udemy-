@@ -26,7 +26,7 @@ const {
   getSearchHistory,
   removeFromSearch,
   getFriendsPageInfos,
-} = require("../controllers/userController.js");
+} = require("../controllers/user.js"); 
 
 const { authUser } = require("../middlwares/auth");
 
